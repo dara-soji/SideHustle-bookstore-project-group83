@@ -1,0 +1,47 @@
+class Team extends React.Component {
+	constructor(){
+		super();
+		
+		this.state = {
+			users: []
+		}	
+	}
+
+componentDidMount() {
+    fetch("https://fakerapi.it/api/v1/persons?_quantity=10")
+    .then(response => response.json())
+    .then(persons => this.setState({users: persons}))
+    .catch(err => console.log(err))
+}
+
+render(){
+return(
+   {console.log(this.state.users)}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>Country</td>
+                            <td>Email</td>    
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>Country</td>
+                            <td>Email</td>  
+                        </tr>
+                        <tr>                            
+                            <td>Company Name</td>
+                            <td>Country</td>
+                            <td>Email</td>  
+                        </tr>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>Country</td>
+                            <td>Email</td>  
+                        </tr>
+                    </tbody>
+                </table>
+);}
+}

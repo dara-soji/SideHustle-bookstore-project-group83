@@ -1,0 +1,16 @@
+.dashboard{
+    display: flex;
+
+    .dashboard__content{
+        flex: 1;
+        height: 100vh;
+        position: relative;
+    }
+
+}
+
+.menu-icon{
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}

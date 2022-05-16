@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import './Client.scss'
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -109,10 +108,9 @@ const prev = () => {
 
   return (
     <div className="client">
-      <Sidebar />
+      
       <div className="client__container">
           <div className="client__container-nav app__flex">
-            <MenuOutlinedIcon className="cursor" fontSize="small"/>
             <div className="client__container-nav-right app__flex">
                 <NotificationsNoneOutlinedIcon className="cursor" fontSize="small"/>
                 <SettingsOutlinedIcon className="cursor" fontSize="small"/>

@@ -61,15 +61,25 @@
 
         z-index: 9;
 
+        @media(max-width: 800px){
+            flex-direction: column;
+            
+        }
+
         .home__container-left{
             // border: 13px black solid;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             height: calc(100vh - 90px);
-            width: 50%;
+            flex: 1;
             flex-direction: column;
-            padding: 100px;
+            padding-left: 100px;
+
+            @media(max-width: 800px){
+                padding: 50px;
+                
+            }
 
             h1{
                 font-size: 3.5rem;
@@ -96,7 +106,7 @@
 
         .home__container-right{
             height: calc(100vh - 90px);
-            width: 50%;
+            flex: 1;
             img{
                 width: 100%;
                 transform: translateY(-100px);

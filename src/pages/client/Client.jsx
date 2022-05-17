@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar/Sidebar'
 import './Client.scss'
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import SearchIcon from '@mui/icons-material/Search';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import axios from 'axios';
@@ -28,7 +19,7 @@ const Client = () => {
 
   useEffect(()=>{
     axios.get(url).then(res =>{
-      console.log(res.data.data)
+      // console.log(res.data.data)
       setClients(res.data.data)
       setFilterClients(res.data.data.slice(0, listBy))
         })
@@ -110,39 +101,7 @@ const prev = () => {
     <div className="client">
       
       <div className="client__container">
-          <div className="client__container-nav app__flex">
-            <div className="client__container-nav-right app__flex">
-                <NotificationsNoneOutlinedIcon className="cursor" fontSize="small"/>
-                <SettingsOutlinedIcon className="cursor" fontSize="small"/>
-                <div className="client__country-circle cursor">NG</div>
-
-                <div className="client__avater app__flex">
-
-                    <AccountCircleIcon className="cursor" fontSize="large"/>
-                    <p className="p-text cursor">Kate Jane</p>
-                    <KeyboardArrowDownIcon className="cursor" fontSize="small"/>
-                </div>
-
-            </div>
-          </div>
-
-          <div className="client__container-title app__flex">
-
-            <h4 className="head-text">Customers</h4>
-
-            <div className="client__container-title-right app__flex">
-
-                <div className="client__container-title-search app__flex">
-
-                    <input id="customer-search" type="search" name="search" placeholder="Search Customer" />
-                    <SearchIcon className="cursor" fontSize="small"/>
-
-                </div>
-                <button className="client__container-title-btn p-text" >
-                    +  Add Customers
-                </button>
-            </div>
-          </div>
+        
         <div className="client__container-list">
             <h3 className="bold-text">Customer List</h3>
             <div className="client__container-list-heading">

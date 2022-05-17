@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import "./Signup.scss"
+import "../Signin/Signin.scss"
 
 const Signup = () => {
 
@@ -36,47 +38,77 @@ const Signup = () => {
             [e.target.name]: e.target.value
         })
     }
+const [isChecked, setIsChecked] = useState(false)
+const [errorMsg, setErrorMsg] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault()
-        sessionStorage.setItem('userDetails', JSON.stringify({...form}))
+        // const checked = docu
+        if(isChecked){
 
-        // toast.success(`Welcome to Libraree ${form.name}`)
-
-        setTimeout(() => {
-            window.location="/"
-        }, 5000);
+            sessionStorage.setItem('userDetails', JSON.stringify({...form}))
+            
+            // toast.success(`Welcome to Libraree ${form.name}`)
+            
+            setTimeout(() => {
+                window.location="/"
+            }, 5000);
+        }else{
+            setErrorMsg("You haven't agreed to out terms and conditions")
+        }
         
         
     }
-
+// console.log(isChecked)
 
   return (
-    <div className="signup">
-         <div>
-            <h1> Sign Up</h1>
-                <form onSubmit={submitHandler}  >
-                    
-                    <input type="text" placeholder=" Name" name="name" onChange={handleChange} />
-                    <input type="text" placeholder=" Country" name="country" onChange={handleChange} />
-                    <input type="text" required placeholder="Address" name="address" onChange={handleChange} />
-                    <input type="email" required placeholder="Contact Email" name="email" onChange={handleChange} />
-                    <input type="text" required placeholder="Phone Number" name="phoneNumber" onChange={handleChange} />
-                    <div style={{display:"flex", alignItems:"flex-start"}}>
-                        <input type="checkbox" style={{width:"25px", margin:"-7px 7px 0 0"}} id="readTerms" />
+    <div className="signup loginPage">
+         <div className="container">
+        <h2>Sign Up</h2>
+        <form className="login_form">
+
+            <div className="email_password_input">
+            <input className="login_input" type="text" name="name" onChange={handleChange} required/>
+                <label htmlFor="name">Name</label>
+            </div>
+            <div className="email_password_input">
+            <input type="text" className="login_input" name="country" onChange={handleChange} required/>
+                <label htmlFor="country">Country</label>
+            </div>
+
+            <div className="email_password_input">
+            <input className="login_input" type="text" required  name="address" onChange={handleChange} />
+                <label htmlFor="Address">Address</label>
+            </div>
+            <div className="email_password_input">
+            <input type="email" className="login_input" name="email" onChange={handleChange} required/>
+                <label htmlFor="email">Contact Email</label>
+            </div>
+            <div className="email_password_input">
+            <input type="text" className="login_input" name="phoneNumber" onChange={handleChange} required/>
+                <label htmlFor="PhoneNumber">Phone Number</label>
+            </div>
+            <div className="p-text" style={{display:"flex",justifyContent: "center", alignItems:"center"}}>
+                        <input type="checkbox"  id="readTerms"
+                    onChange={(e) => setIsChecked(!isChecked)}
+                    checked={isChecked}
+                        />
                         <p >I have read, understood and i agree to the terms and conditions</p>
                     </div>
-                    <button 
-                        className= {formValid?"auth_signup-active":"auth_signup-submit"}
-                        // type="submit"
-                        // id="actionBtn"
-                        // disabled={!formValid}
-                    >
-                        Sign Up
-                    </button>
+            <button onClick={submitHandler} 
+                        disabled={!formValid}
+            className={formValid?"auth_signup-active login_btn":"auth_signup-submit login_btn"}>
+                Sign Up
+            </button>
+            <p className="success-message-l">Already in Group 83?<Link className="app__link  link__si" to="/signin"> Sign In</Link></p>
+            <p className="err-message p-text">{errorMsg}</p>
 
-                </form>
-            </div>
+        </form>
+        </div>
+        <Link className="link_login" to='/home'>
+            <p className="bth">Back to home</p>
+        </Link>
+       
     </div>
   )
 }
